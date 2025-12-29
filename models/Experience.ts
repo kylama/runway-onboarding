@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, models, model } from "mongoose";
 
 export interface IExperience extends Document {
   company: string;
@@ -18,4 +18,7 @@ const experienceSchema: Schema = new Schema({
   description: { type: String, required: false },
 });
 
-export default mongoose.model<IExperience>("Experience", experienceSchema);
+const Experience =
+  models.Experience || model<IExperience>("Experience", experienceSchema);
+
+export default Experience;

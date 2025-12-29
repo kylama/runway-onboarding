@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, models, model } from "mongoose";
 
 export interface IProject extends Document {
   projectName: string;
@@ -18,4 +18,6 @@ const projectSchema: Schema = new Schema({
   githubLink: { type: String, required: false },
 });
 
-export default mongoose.model<IProject>("Project", projectSchema);
+const Project = models.Project || model<IProject>("Project", projectSchema);
+
+export default Project;
